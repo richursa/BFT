@@ -7,17 +7,17 @@ func lieutenant(index int, decision bool, messenger [3]chan bool) {
 	falseCount := 0
 	d := true
 	if index != 1 {
-		go func() {
-			for i := 0; i < 3; i++ {
+		for i := 0; i < 3; i++ {
+			go func() {
 				messenger[index] <- decision
-			}
-		}()
+			}()
+		}
 	} else {
-		go func() {
-			for i := 0; i < 3; i++ {
+		for i := 0; i < 3; i++ {
+			go func() {
 				messenger[index] <- !decision
-			}
-		}()
+			}()
+		}
 	}
 
 	for i := 0; i < 3; i++ {
